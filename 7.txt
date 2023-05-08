@@ -1,0 +1,43 @@
+Q7. Create a database medicines that contains the details about medicines such as {manufacturer, 
+composition, price}. Create an interactive application using which the user can find an 
+alternative to a given medicine with the same composition.
+
+
+# Read the data from file into a data frame
+alcohol_df <- read.table("alcohol_consumption.txt", sep="\t", header=TRUE)
+
+# Check the data frame
+print(alcohol_df)
+
+# For each year, display the country with maximum Beer consumption and minimum Wine consumption
+for (year in unique(alcohol_df$Year)) {
+  # Subset the data frame for the current year
+  year_df <- subset(alcohol_df, Year == year)
+  # Find the country with maximum Beer consumption
+  max_beer_country <- year_df$Country[which.max(year_df$Beer)]
+  # Find the country with minimum Wine consumption
+  min_wine_country <- year_df$Country[which.min(year_df$Wine)]
+  # Print the results
+  cat("Year:", year, "Max beer consumption:", max_beer_country, "Min wine consumption:", min_wine_country, "\n")
+}
+
+# Find the average alcohol consumption for each country
+avg_alcohol_df <- aggregate(cbind(Beer, Wine, Spirit) ~ Country, data=alcohol_df, FUN=mean)
+print(avg_alcohol_df)
+
+# Find the Beer consumption for New Zealand for the year(s) when its spirit consumption was more than the mean spirit consumption
+mean_spirit <- mean(alcohol_df$Spirit)
+subset_df <- subset(alcohol_df, Country == "NewZealand" & Spirit > mean_spirit)
+beer_consumption <- subset_df$Beer
+years <- subset_df$Year
+cat("Beer consumption for New Zealand when its spirit consumption was more than the mean:", beer_consumption, "Years:", years, "\n")
+
+# Find the average Beer consumption/Wine Consumption/Spirit consumption for each year
+avg_year_df <- aggregate(cbind(Beer, Wine, Spirit) ~ Year, data=alcohol_df, FUN=mean)
+print(avg_year_df)
+
+# Plot the mean Beer consumption/mean Wine consumption/mean Spirit consumption for each country
+library(ggplot2)
+ggplot(avg_alcohol_df, aes(x=Country, y=Beer)) + geom_bar(stat="identity") + ggtitle("Mean Beer consumption per country")
+ggplot(avg_alcohol_df, aes(x=Country, y=Wine)) + geom_bar(stat="identity") + ggtitle("Mean Wine consumption per country")
+ggplot(avg_alcohol_df, aes(x=Country, y=Spirit)) + geom_bar(stat="identity") + ggtitle("Mean Spirit consumption per country")

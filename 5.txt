@@ -1,0 +1,38 @@
+Q5. In the library MASS is a dataset UScereal which contains information about popular 
+breakfast cereals. Attach the data set and use different kinds of plots to investigate the following 
+relationships:
+a) relationship between manufacturer and shelf 
+b) relationship between fat and vitamins 
+c) relationship between fat and shelf 
+d) relationship between carbohydrates and sugars
+e) relationship between fibre and manufacturer
+f) relationship between sodium and sugars
+
+
+
+# Read in the CSV file
+rainfall <- read.csv("rainfall.csv")
+
+# Subset the first ten rows
+rainfall_first_ten <- rainfall[1:10, ]
+rainfall_first_ten
+
+# Subset the data where rain is greater than 20
+rainfall_gt_20 <- rainfall[rainfall$Rainfall>20, ]
+rainfall_gt_20
+
+# Subset the data where rain is at least 4
+rainfall_at_least_4 <- rainfall[rainfall$Rainfall >= 4, ]
+rainfall_at_least_4
+# Compute the mean rainfall for these days
+mean_rainfall_at_least_4 <- mean(rainfall_at_least_4$Rainfall)
+mean_rainfall_at_least_4
+# Subset the data where rain is either 0 or 0.6
+rainfall_zero_or_point_six <- rainfall[rainfall$Rainfall %in% c(0, 0.6), ]
+rainfall_zero_or_point_six
+
+# Aggregate the rainfall by month
+rainfall_monthly <- aggregate(Rainfall ~ MONTH, data = rainfall, FUN = sum)
+
+# Plot the monthly rainfall using a bar chart
+barplot(Rainfall ~ MONTH, data = rainfall_monthly, main = "Monthly Rainfall", xlab = "Month", ylab = "Rainfall")

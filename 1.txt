@@ -1,0 +1,50 @@
+Q1. Write an R script to do the following:
+a) simulate a sample of 100 random data points from a normal distribution with mean 100 
+and
+standard deviation 5 and store the result in a vector.
+b) visualize the vector created above using different plots.
+c) test the hypothesis that the mean equals 100.
+d) use wilcox test to test the hypothesis that mean equals 90
+
+
+num<-(c(1.3,5.6,8,9))
+ch<-c('a','b','c','d')
+int<-c(11L,12L,8L,9L)
+bool<-c(TRUE,FALSE,TRUE,TRUE)
+class(num)
+class(ch)
+class(int)
+class(bool)
+
+
+x<-c(8,9,10)
+y<-c(5,6)
+z<-2*x+y-3
+z
+
+odd<-seq(from=101,to=500,by=2)
+odd
+mean(odd)
+sd(odd)
+
+tl<-list(c(23,5,7),array(1:9),list(8:10))
+tl
+
+
+m1<-matrix(c(5:14),nrow=3,ncol=3)
+m2<-matrix(c(1:9),nrow=3,ncol=3)
+m3<-m1*m2
+m3
+
+rowMeans(m1)
+colMeans(m1)
+
+cb<-rbind(m1,m2)
+cb
+cm<-cbind(m1,m2)
+cm
+
+cm<-matrix(c(10:18),nrow=3,ncol=4)
+cm
+cm<-matrix(cm,nrow=2,ncol=4)
+cm

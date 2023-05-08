@@ -1,0 +1,20 @@
+Q6. Write R script to:
+a) Do two simulations of a binomial number with n = 100 and p = .5. Do you get the same 
+results each time? What is different? What is similar?
+
+b) Do a simulation of the normal two times. Once with n = 10, µ = 10 and σ = 10, the other 
+with n = 10, µ = 100 and σ = 100. How are they different? How are they similar? Are 
+both approximately normal? 
+
+
+
+summary(iris)
+
+setosa <- iris[iris$Species == "setosa", ]
+plot(setosa$Sepal.Length, setosa$Sepal.Width, main = "Sepal Length vs Sepal Width for Setosa", 
+     xlab = "Sepal Length", ylab = "Sepal Width")
+hist(iris$Petal.Length, main = "Histogram of Petal Length", xlab = "Petal Length", ylab = "Frequency")
+
+versicolor <- iris[iris$Species == "versicolor", ]
+boxplot(versicolor$Petal.Width, main = "Boxplot of Petal Width for Versicolor", 
+        ylab = "Petal Width", xlab = "Species", names = "Versicolor")

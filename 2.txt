@@ -1,0 +1,21 @@
+Q2. Using the Algae data set from package DMwR to complete the following tasks. 
+a) create a graph that you find adequate to show the distribution of the values of algae a6.
+b) show the distribution of the values of size 3.
+c) check visually if oPO4 follows a normal distribution.
+d) produce a graph that allows you to understand how the values of NO3 are distributed 
+across the sizes of river.
+e) using a graph check if the distribution of algae a1 varies with the speed of the river.
+f) visualize the relationship between the frequencies of algae a1 and a6. Give the 
+appropriate graph title, x-axis and y-axis title
+
+
+str(airquality)
+dim(airquality)
+sum(complete.cases(airquality))
+subset(airquality, Temp >= 70 & Temp <= 80)
+sum(airquality$Month == 5)
+head(airquality, n = 10)
+summary(airquality$Wind)
+airquality[order(-airquality$Temp),]
+new_observation <- c(Ozone = 10, Solar.R = 200, Wind = 10, Temp = 75, Month = 7, Day = 1)
+airquality <- rbind(airquality, new_observation)

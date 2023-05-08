@@ -1,0 +1,23 @@
+Q4. The built-in data set mammals contain data on body weight versus brain weight. Write R 
+commands to:
+a) Find the Pearson and Spearman correlation coefficients. Are they similar? 
+b) Plot the data using the plot command .
+c) Plot the logarithm (log) of each variable and see if that makes a difference.
+
+
+library(DBI)
+library(RMySQL)
+# Establish database connection
+mydb = dbConnect(MySQL(), user='root',dbname='students',host="127.0.0.1")
+# Create STUDENT table with columns 'ID', 'Name', 'Age', 'Gender', 'City'
+dbSendQuery(mydb, "CREATE TABLE STUDENT (ID INT, Name VARCHAR(20), Age INT, Gender VARCHAR(10), City VARCHAR(20))")
+# Insert 5 rows into the STUDENT table
+dbSendQuery(mydb, "INSERT INTO STUDENT VALUES (1, 'ANNI', 20, 'FEMALE', 'LUCKNOW'), (2, 'ELL', 23, 'Female', 'CANADA'), (3, 'ALLE', 25, 'Female', 'U.S.A'), (4, 'BRUTE', 67, 'Male', 'JAPAN'), (5, 'SARTUN', 13, 'Female', 'RUSSIA')")
+# Display all the information stored in STUDENT table
+dbGetQuery(mydb, "SELECT * FROM STUDENT")
+# Delete all the rows from STUDENT table
+dbSendQuery(mydb, "DELETE FROM STUDENT")
+# Drop the STUDENT table
+dbSendQuery(mydb, "DROP TABLE STUDENT")
+# Close database connection
+dbDisconnect(mydb)

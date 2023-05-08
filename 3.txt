@@ -1,0 +1,16 @@
+Q3. Read the file Coweeta.CSV and write an R script to do the following:
+a) count the number of observations per species. 
+b) take a subset of the data including only those species with at least 10 observations. 
+c) make a scatter plot of biomass versus height, with the symbol colour varying by species, 
+and use filled squares for the symbols. Also add a title to the plot, in italics. 
+d) log-transform biomass, and redraw the plot.
+
+
+toy_data <- read.csv("toy_dataset.csv")
+attach(toy_data)
+sum(City == "New York City")
+head(toy_data[order(-Income), ], n = 5)
+sum(Income > mean(Income))
+max(Income[Gender=="Female"])
+toy_data[sample(nrow(toy_data), 10), ]
+detach(toy_data)

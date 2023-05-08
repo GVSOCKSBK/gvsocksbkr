@@ -1,0 +1,12 @@
+Q9. Create a package in R to perform certain basic statistics functions.
+
+library(RMySQL)
+con <- dbConnect(MySQL(), user = "root", password = "", dbname = "songs", host = "127.0.0.1")
+
+mood_input <- "happy"
+query <- paste("SELECT song_name, online_link_play_song FROM songs_table WHERE mood = '", mood_input, "'", sep = "")
+result <- dbGetQuery(con, query)
+
+print(result)
+
+dbDisconnect(con
